@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title> cert html 2 실습#2 22김민재 </title>
+	</head>
+</html>
+<script>
+		var [a, b, c] = prompt("숫자 입력").split(" ");
+		alert("\n1번쨰 입력 값 : " + a + "\n2번쨰 입력 값 : " + b + "\n3번쨰 입력 값 : " + c);
+		document.write("입력한 수 : " + a + " " + b + " " + c);
+		
+		a = parseInt(a), b = parseInt(b), c = parseInt(c);
+		if (a > b) {[a,b] = [b,a];}
+		if (b > c) {[b,c] = [c,b];}
+	
+		document.write("<br>가장큰수 : " + c);
+</script>
