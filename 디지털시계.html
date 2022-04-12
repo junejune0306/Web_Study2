@@ -1,0 +1,63 @@
+<html> <! DS-DIGIT.TTF 파일이 같은 디렉토리에 있어야 합니다.>
+	<head>
+		<title> cert html 2 디지털 시계 22김민재 </title>
+		<style>
+			@font-face {
+				src : url("./DS-DIGIT.TTF");
+				font-family: "dig";
+			}
+			* {
+				font-family: "dig";
+				color: red;
+			}
+			td {
+				width: 14vmin;
+				text-align: right;
+			}
+			.col {
+				width: 5vmin;
+			}
+			#blink {
+				color: black;
+			}
+		</style>
+	</head>
+	<body align="center" style="background-color: black">
+		<div style="font-size: 15vmin"><br> Time is... </div>
+		<div>
+			<table align="center" style="font-size: 25vmin">
+				<tr>
+					<td></td> <td></td> <td class="col"></td> <td></td> <td></td> <td class="col" id="blink"></td> <td></td> <td></td> 
+				</tr>
+			</table>
+		</div>
+		<div id="date" style="font-size: 5vmin"></div>
+	</body>
+</html>
+<script>
+	function getTime() {
+		var day = new Date(), timeall = ':';
+		var time = [day.getHours(), day.getMinutes(), day.getSeconds()];
+		
+		for (var i = 0; i < 3; i++) {
+			if (time[i] < 10) {
+				time[i] = '0' + time[i];
+			}
+			timeall += ":" + time[i];
+		}	
+		for (var i = 0; i < 8; i++) {
+			document.getElementsByTagName('td')[i].innerHTML = timeall[i+2];
+		}
+		var blink = document.getElementById('blink').style.color;
+		document.getElementById('blink').style.color = (blink == 'black') ? 'red' : 'black';
+		
+		days = ['SU.','MO.','TU.','WE.','TH.','FR.','SA.'];
+		months = ['JAN.','FEB.','MAR.','APR.','MAY.','JUN.','JUL.','AUG.','SEP.','OCT.','NOV.','DEC'];
+		var date = document.getElementById('date').innerHTML;
+		date = day.getFullYear() + '.' + (day.getMonth()+1) + '.' + day.getDate() + ' ' + days[day.getDay()] + ' ' + months[day.getMonth()];
+		document.getElementById('date').innerHTML = date;
+	}
+	getTime();
+	setInterval(getTime, 1000);
+		
+</script>
